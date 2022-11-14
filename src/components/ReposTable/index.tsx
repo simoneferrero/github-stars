@@ -14,7 +14,10 @@ type Props = {
 const ReposTable = ({ repos }: Props) => {
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <Table
+        sx={{ minWidth: 650 }}
+        aria-label="Table containing information about GitHub repositories"
+      >
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>

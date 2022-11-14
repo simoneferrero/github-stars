@@ -3,9 +3,15 @@ import {
   screen,
   waitForElementToBeRemoved,
 } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import App from './App'
 import { MockedProvider } from '@apollo/client/testing'
-import { successMocks, reposNodes, errorMocks } from './mocks/reposSearch'
+import {
+  successMocks,
+  errorMocks,
+  reposNodes,
+  altRepoNode,
+} from './mocks/reposSearch'
 
 const renderComponent = (mocks = successMocks) =>
   render(
@@ -44,7 +50,29 @@ describe('App', () => {
 
     await waitForElementToBeRemoved(() => screen.queryByText(/loading.../i))
 
-    const numberOfRepos = await screen.findByText(/there was an error/i)
-    expect(numberOfRepos).toBeVisible()
+    const error = await screen.findByText(/there was an error/i)
+    expect(error).toBeVisible()
+  })
+
+  it('should render new data when the user types a new search value', async () => {
+    renderComponent()
+
+    await waitForElementToBeRemoved(() => screen.queryByText(/loading.../i))
+
+    const searchInput = screen.getByLabelText(/search value/i)
+
+    userEvent.type(searchInput, '-router')
+
+    const submitButton = screen.getByRole('button', { name: /search/i })
+
+    userEvent.click(submitButton)
+
+    const loadingText = await screen.findByText(/loading.../i)
+    expect(loadingText).toBeVisible()
+
+    await waitForElementToBeRemoved(() => screen.queryByText(/loading.../i))
+
+    const repoName = await screen.findByRole('link', { name: altRepoNode.name })
+    expect(repoName).toBeVisible()
   })
 })

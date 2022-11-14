@@ -24,11 +24,19 @@ export const reposNodes = [
   },
 ]
 
+export const altRepoNode = {
+  __typename: 'Repository',
+  name: 'react-router',
+  stargazerCount: 48786,
+  forkCount: 9588,
+  url: 'https://github.com/remix-run/react-router',
+}
+
 const createMocks = (isSuccess = true) => [
   {
     request: {
       query: SEARCH_REPOSITORIES_QUERY,
-      variables: { query: 'topic:react sort:stars' },
+      variables: { query: 'react sort:stars' },
     },
     ...(isSuccess
       ? {
@@ -43,6 +51,19 @@ const createMocks = (isSuccess = true) => [
       : {
           error: new Error('An error occurred'),
         }),
+  },
+  {
+    request: {
+      query: SEARCH_REPOSITORIES_QUERY,
+      variables: { query: 'react-router sort:stars' },
+    },
+    result: {
+      data: {
+        search: {
+          nodes: [altRepoNode],
+        },
+      },
+    },
   },
 ]
 

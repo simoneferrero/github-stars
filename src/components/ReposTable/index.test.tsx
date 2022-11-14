@@ -4,7 +4,7 @@ import { reposNodes } from '../../mocks/reposSearch'
 
 const renderComponent = () => render(<ReposTable repos={reposNodes} />)
 
-describe('Repos', () => {
+describe('ReposTable', () => {
   it('should render the table header', () => {
     renderComponent()
 
