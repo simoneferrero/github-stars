@@ -35,9 +35,9 @@ const App = () => {
     <div className="App">
       <header className="App-header">
         <h1>GITHUB STARS</h1>
-        <section>
-          <SearchBox handleSubmit={handleSubmit} loading={loading} />
-        </section>
+        <SearchBox handleSubmit={handleSubmit} loading={loading} />
+      </header>
+      <main className="App-main">
         <section>
           {loading ? (
             <p>Loading...</p>
@@ -47,7 +47,7 @@ const App = () => {
             <ReposTable repos={data.search.nodes} />
           )}
         </section>
-      </header>
+      </main>
     </div>
   )
 }
