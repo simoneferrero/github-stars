@@ -7,6 +7,7 @@
     "build": "react-scripts build",
     "format": "prettier --write --ignore-path .gitignore .",
     "test": "react-scripts test",
+    "test:ci": "react-scripts test --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "prepare": "husky install"
   },
@@ -54,5 +55,13 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,css,json,md}": "yarn format"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!<rootDir>/node_modules/",
+      "!<rootDir>/src/index.tsx",
+      "!<rootDir>/src/reportWebVitals.ts"
+    ]
   }
 }
