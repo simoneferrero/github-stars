@@ -1,14 +1,34 @@
-import React from 'react'
 import logo from './logo.svg'
 import './App.css'
+import { gql, useQuery } from '@apollo/client'
+
+type Query = {
+  viewer: {
+    login?: string
+  }
+}
+
+const QUERY = gql`
+  query {
+    viewer {
+      login
+    }
+  }
+`
 
 function App() {
+  const { data, loading, error } = useQuery<Query>(QUERY)
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.tsx</code> and save to reload.
+          {loading
+            ? 'Loading...'
+            : error
+            ? 'There was an error'
+            : data?.viewer.login}
         </p>
         <a
           className="App-link"
