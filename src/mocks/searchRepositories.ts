@@ -2,21 +2,21 @@ import { SEARCH_REPOSITORIES_QUERY } from '../queries/searchRepositories'
 
 export const reposSearchNodes = [
   {
-    __typename: 'Repository',
+    __typename: 'Repository' as const,
     name: 'freeCodeCamp',
     stargazerCount: 356893,
     forkCount: 30402,
     url: 'https://github.com/freeCodeCamp/freeCodeCamp',
   },
   {
-    __typename: 'Repository',
+    __typename: 'Repository' as const,
     name: 'react',
     stargazerCount: 197657,
     forkCount: 41006,
     url: 'https://github.com/facebook/react',
   },
   {
-    __typename: 'Repository',
+    __typename: 'Repository' as const,
     name: 'create-react-app',
     stargazerCount: 97927,
     forkCount: 25547,

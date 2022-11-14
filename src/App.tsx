@@ -5,6 +5,7 @@ import {
   SearchRepositoriesVariables,
 } from './types/SearchRepositories'
 import { SEARCH_REPOSITORIES_QUERY } from './queries/searchRepositories'
+import ReposTable from './components/ReposTable'
 
 const App = () => {
   const { data, loading, error } = useQuery<
@@ -21,22 +22,13 @@ const App = () => {
       <header className="App-header">
         <h1>GITHUB STARS</h1>
         <section>
-          {loading
-            ? 'Loading...'
-            : error
-            ? 'There was an error'
-            : data?.search.nodes.map(({ name, url }) => (
-                <p key={name}>
-                  <a
-                    className="App-link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href={url}
-                  >
-                    {name}
-                  </a>
-                </p>
-              ))}
+          {loading ? (
+            'Loading...'
+          ) : error || !data?.search ? (
+            'There was an error'
+          ) : (
+            <ReposTable repos={data.search.nodes} />
+          )}
         </section>
       </header>
     </div>
