@@ -18,7 +18,7 @@ const App = () => {
   useEffect(() => {
     searchRepositories({
       variables: {
-        query: 'react sort:stars',
+        query: 'react',
       },
     })
   }, [searchRepositories])
@@ -26,7 +26,7 @@ const App = () => {
   const handleSubmit = (searchValue: string) => {
     searchRepositories({
       variables: {
-        query: `${searchValue} sort:stars`,
+        query: `${searchValue}`,
       },
     })
   }

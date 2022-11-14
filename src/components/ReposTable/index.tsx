@@ -26,9 +26,9 @@ const ReposTable = ({ repos }: Props) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {repos.map(({ name, stargazerCount, forkCount, url }) => (
+          {repos.map(({ id, name, stargazerCount, forkCount, url }) => (
             <TableRow
-              key={name}
+              key={id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell component="th" scope="row">

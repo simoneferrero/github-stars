@@ -6,6 +6,7 @@ export const SEARCH_REPOSITORIES_QUERY = gql`
       nodes {
         ... on Repository {
           __typename
+          id
           name
           stargazerCount
           forkCount

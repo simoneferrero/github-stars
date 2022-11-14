@@ -1,5 +1,6 @@
 export type RepoNode = {
   __typename: 'Repository'
+  id: string
   name: string
   stargazerCount: number
   forkCount: number
