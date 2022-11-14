@@ -2,15 +2,15 @@ import './App.css'
 import { useQuery } from '@apollo/client'
 import {
   SearchRepositoriesQueryResult,
-  SearchRepositoriesVariables,
-} from './types/SearchRepositories'
+  SearchRepositoriesQueryVariables,
+} from './types/ReposSearch'
 import { SEARCH_REPOSITORIES_QUERY } from './queries/searchRepositories'
 import ReposTable from './components/ReposTable'
 
 const App = () => {
   const { data, loading, error } = useQuery<
     SearchRepositoriesQueryResult,
-    SearchRepositoriesVariables
+    SearchRepositoriesQueryVariables
   >(SEARCH_REPOSITORIES_QUERY, {
     variables: {
       query: 'topic:react sort:stars',

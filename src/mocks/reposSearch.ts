@@ -1,6 +1,6 @@
 import { SEARCH_REPOSITORIES_QUERY } from '../queries/searchRepositories'
 
-export const reposSearchNodes = [
+export const reposNodes = [
   {
     __typename: 'Repository' as const,
     name: 'freeCodeCamp',
@@ -24,8 +24,6 @@ export const reposSearchNodes = [
   },
 ]
 
-export const reposCount = 248260
-
 const createMocks = (isSuccess = true) => [
   {
     request: {
@@ -37,8 +35,7 @@ const createMocks = (isSuccess = true) => [
           result: {
             data: {
               search: {
-                repositoryCount: reposCount,
-                nodes: reposSearchNodes,
+                nodes: reposNodes,
               },
             },
           },

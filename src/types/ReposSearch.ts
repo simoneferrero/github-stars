@@ -1,4 +1,4 @@
-export type SearchRepository = {
+export type RepoNode = {
   __typename: 'Repository'
   name: string
   stargazerCount: number
@@ -8,10 +8,10 @@ export type SearchRepository = {
 
 export type SearchRepositoriesQueryResult = {
   search: {
-    nodes: SearchRepository[]
+    nodes: RepoNode[]
   }
 }
 
-export type SearchRepositoriesVariables = {
+export type SearchRepositoriesQueryVariables = {
   query: String
 }

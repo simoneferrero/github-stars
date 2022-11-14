@@ -5,11 +5,7 @@ import {
 } from '@testing-library/react'
 import App from './App'
 import { MockedProvider } from '@apollo/client/testing'
-import {
-  successMocks,
-  reposSearchNodes,
-  errorMocks,
-} from './mocks/searchRepositories'
+import { successMocks, reposNodes, errorMocks } from './mocks/reposSearch'
 
 const renderComponent = (mocks = successMocks) =>
   render(
@@ -37,7 +33,7 @@ describe('App', () => {
 
     await waitForElementToBeRemoved(() => screen.queryByText(/loading.../i))
 
-    reposSearchNodes.forEach(({ name, url }) => {
+    reposNodes.forEach(({ name, url }) => {
       const repoName = screen.getByRole('link', { name })
       expect(repoName).toHaveAttribute('href', url)
     })

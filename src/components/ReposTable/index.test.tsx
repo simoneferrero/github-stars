@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react'
 import ReposTable from '.'
-import { reposSearchNodes } from '../../mocks/searchRepositories'
+import { reposNodes } from '../../mocks/reposSearch'
 
-const renderComponent = () => render(<ReposTable repos={reposSearchNodes} />)
+const renderComponent = () => render(<ReposTable repos={reposNodes} />)
 
 describe('Repos', () => {
   it('should render the table header', () => {
@@ -21,7 +21,7 @@ describe('Repos', () => {
   it('should render the table data', () => {
     renderComponent()
 
-    reposSearchNodes.forEach(({ name, url, stargazerCount, forkCount }) => {
+    reposNodes.forEach(({ name, url, stargazerCount, forkCount }) => {
       const repoName = screen.getByRole('link', { name })
       expect(repoName).toHaveAttribute('href', url)
 

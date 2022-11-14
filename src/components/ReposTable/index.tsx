@@ -5,10 +5,10 @@ import TableContainer from '@mui/material/TableContainer'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
-import { SearchRepository } from '../../types/SearchRepositories'
+import { RepoNode } from '../../types/ReposSearch'
 
 type Props = {
-  repos: SearchRepository[]
+  repos: RepoNode[]
 }
 
 const ReposTable = ({ repos }: Props) => {
